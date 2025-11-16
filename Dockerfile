@@ -9,7 +9,7 @@ COPY . .
 RUN mkdir -p /app/dist && cp -r public/* /app/dist
 
 # Injecter automatiquement l'attribut data-env="prod" dans index.html
-RUN sed -i 's/data-env="[^"]*"/data-env="prod"/' index.html /app/dist/index.html
+RUN sed -i 's/data-env="[^"]*"/data-env="prod"/' /app/dist/index.html
 
 # Étape 2 : Nginx pour servir le front
 FROM nginx:alpine
