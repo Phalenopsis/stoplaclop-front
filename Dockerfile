@@ -1,19 +1,28 @@
-# Étape 1 : build (pour le front vanilla, juste copier les fichiers)
+# Étape 1 : Préparer les fichiers du front
 FROM node:20-alpine AS build
 WORKDIR /app
 
-# Copier le dossier public
-COPY public ./public
+# Copier tout le front (ton repo contient /public)
+COPY . .
 
-# Préparer le dossier final pour Nginx
-RUN mkdir -p /app/dist && cp -r public/* /app/dist/
+# Copier les fichiers dans /dist pour Nginx
+RUN mkdir -p /app/dist && cp -r public/* /app/dist
 
-# Étape 2 : serveur Nginx
+# Injecter automatiquement l'attribut data-env="prod" dans index.html
+RUN sed -i 's/data-env="[^"]*"/data-env="prod"/' index.html /app/dist/index.html
+
+# Étape 2 : Nginx pour servir le front
 FROM nginx:alpine
+WORKDIR /usr/share/nginx/html
+
+# Copier le front buildé
 COPY --from=build /app/dist /usr/share/nginx/html
+
+# Copier la config Nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Expose le port HTTP
+# Exposer le port HTTP
 EXPOSE 80
 
+# Lancer Nginx
 CMD ["nginx", "-g", "daemon off;"]
