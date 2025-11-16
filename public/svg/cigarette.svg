@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Fond noir -->
+  <rect width="64" height="64" fill="black"/>
+
+  <!-- Cigarette barrée -->
+  <g stroke="rgb(74, 241, 74)" stroke-width="2" fill="none">
+    <!-- Corps de la cigarette -->
+    <rect x="12" y="28" width="40" height="8" rx="2"/>
+    <!-- Filtre -->
+    <rect x="12" y="28" width="8" height="8" fill="rgb(74,241,74)"/>
+    <!-- Barre diagonale pour l'interdiction -->
+    <line x1="8" y1="8" x2="56" y2="56"/>
+  </g>
+
+  <!-- Fumée stylisée -->
+  <g fill="none" stroke="rgb(74,241,74)" stroke-width="1" stroke-opacity="0.5">
+    <path d="M52 28 Q54 24 52 20" />
+    <path d="M50 28 Q52 24 50 21" />
+  </g>
+
+  <!-- Effet scanlines -->
+  <rect width="64" height="64" fill="url(#scanlines)" />
+
+  <defs>
+    <!-- Scanlines -->
+    <pattern id="scanlines" width="1" height="2" patternUnits="userSpaceOnUse">
+      <rect width="1" height="1" fill="rgba(74,241,74,0.05)" />
+    </pattern>
+
+    <!-- Scintillement CRT -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Appliquer scintillement -->
+  <g filter="url(#glow)">
+    <use href="#cigarette"/>
+  </g>
+</svg>

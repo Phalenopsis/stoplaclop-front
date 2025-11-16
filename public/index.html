@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr" data-env="dev">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stoptaclop</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="svg/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <script type="module" src="./js/main.js"></script>
+    <header>
+      <div id="logo">
+        <img
+          src="svg/favicon.svg"
+          alt="Logo Stoptaclop"
+          width="50"
+          height="50"
+        />
+      </div>
+      <div id="siteTitle">Stoptaclop</div>
+      <div id="user"></div>
+    </header>
+
+    <div id="errorBox" class="error"></div>
+
+    <dialog id="loginDialog">
+      <form id="loginForm" name="loginForm" method="dialog">
+        <legend>Login Form</legend>
+        <label for="loginEmail">Email:</label>
+        <input type="email" id="loginEmail" name="loginEmail" required />
+        <label for="loginPassword">Password:</label>
+        <input
+          type="password"
+          id="loginPassword"
+          name="loginPassword"
+          required
+        />
+        <menu>
+          <button id="cancelLogin" type="button" class="secondary">
+            Annuler
+          </button>
+          <button id="confirmLogin" type="submit">Confirmer</button>
+        </menu>
+      </form>
+    </dialog>
+    <button id="showLoginDialog">Login</button>
+
+    <dialog id="registerDialog">
+      <form id="registerForm" name="registerForm" method="dialog">
+        <legend>Register Form</legend>
+        <label for="registerEmail">Email:</label>
+        <input type="email" id="registerEmail" name="registerEmail" required />
+        <label for="registerPassword">Password:</label>
+        <input
+          type="password"
+          id="registerPassword"
+          name="registerPassword"
+          required
+        />
+        <menu>
+          <button id="cancelRegister" type="button" class="secondary">
+            Annuler
+          </button>
+          <button id="confirmRegister" type="submit">Confirmer</button>
+        </menu>
+      </form>
+    </dialog>
+    <button class="secondary" id="showRegisterDialog">Register</button>
+
+    <main id="app" class="no-display">
+      <div id="stats">
+        <p>Aujourd'hui : <span id="smokedToday">0</span></p>
+        <p>Total : <span id="totalSmoked">0</span></p>
+        <p id="firstSmokedRecorded"></p>
+
+        <ul id="smokedLastWeek"></ul>
+
+        <button id="addSmokedBtn">Fumer une cigarette</button>
+      </div>
+    </main>
+    <button id="logoutButton" class="no-display secondary">Logout</button>
+  </body>
+</html>
