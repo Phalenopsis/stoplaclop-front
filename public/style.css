@@ -1,0 +1,108 @@
+@import url("css/button.css");
+@import url("css/dialog.css");
+
+body {
+    font: var(--font);
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--color);
+    min-height: 100dvh;
+
+    > button {
+        margin: 20vh auto;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column; /* sur mobile, les éléments se mettent en colonne */
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.5rem 0;
+        text-align: center;
+
+        #logo {
+            img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        #siteTitle {
+            flex: 2;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        #user {
+            padding-right: 1rem;
+            flex: 1;
+            text-align: end;
+        }
+    }
+}
+
+/* ==========================
+   🔸 Stats presentation
+   ========================== */
+#stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1rem;
+    text-align: center;
+    max-width: 400px;
+    margin: 1rem auto;
+    border: 1px solid var(--color);
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    p {
+        margin: 0.2rem 0;
+        font-size: 1.2rem;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0.5rem 0;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+
+        li {
+            background-color: var(--bg-color);
+            border: 1px solid var(--color);
+            padding: 0.3rem 0.6rem;
+            border-radius: 3px;
+            margin: 0.2rem;
+            min-width: 40px;
+        }
+    }
+
+    #addSmokedBtn {
+        margin: 1rem auto 0;
+        display: block;
+        width: 60%;
+        max-width: 250px;
+    }
+}
+
+/* ==========================
+   🔸 Responsive tweaks
+   ========================== */
+@media (min-width: 600px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    #stats ul {
+        justify-content: flex-start;
+    }
+}
+
+.no-display {
+    display: none;
+}
