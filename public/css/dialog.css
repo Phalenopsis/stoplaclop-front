@@ -1,0 +1,140 @@
+/* ==========================
+   🔸 Variables globales
+   ========================== */
+:root {
+  --bg-color: black;
+  --color: rgb(74, 241, 74);
+  --font: 1em "Lucida Console", monospace;
+
+  /* Dialogs */
+  --dialog-bg: var(--bg-color);
+  --dialog-border: 2px solid var(--color);
+  --dialog-shadow: 0 0 10px var(--color);
+  --dialog-padding: 1.5rem;
+  --dialog-radius: 4px;
+
+  /* Inputs */
+  --input-bg: var(--bg-color);
+  --input-color: var(--color);
+  --input-border: 1px solid var(--color);
+  --input-focus-shadow: 0 0 10px var(--color);
+
+  /* Menu buttons inside dialogs */
+  --menu-gap: 1rem;
+}
+
+/* ==========================
+   🔸 Dialog général
+   ========================== */
+dialog {
+  background-color: var(--dialog-bg);
+  border: var(--dialog-border);
+  box-shadow: var(--dialog-shadow);
+  padding: var(--dialog-padding);
+  border-radius: var(--dialog-radius);
+  font: var(--font);
+  color: var(--color);
+  width: 320px;
+  max-width: 90%;
+}
+
+/* ==========================
+   🔸 Formulaire à l'intérieur du dialog
+   ========================== */
+dialog form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+dialog form label {
+  font-weight: bold;
+}
+
+dialog form input[type="email"],
+dialog form input[type="password"] {
+  background-color: var(--input-bg);
+  color: var(--input-color);
+  border: var(--input-border);
+  padding: 0.4rem 0.5rem;
+  font: var(--font);
+  letter-spacing: 1px;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+dialog form input[type="email"]:focus,
+dialog form input[type="password"]:focus {
+  box-shadow: var(--input-focus-shadow);
+  transform: scale(1.02);
+}
+
+/* ==========================
+   🔸 Menu interne
+   ========================== */
+dialog form menu {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--menu-gap);
+  margin-top: 1rem;
+  border: none;
+  padding: 0;
+}
+
+/* ==========================
+   🔸 Boutons internes
+   ========================== */
+dialog form button {
+  font: var(--font);
+  letter-spacing: 1px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+
+  &.secondary {
+    border: 1px solid var(--color);
+    background-color: var(--bg-color);
+    color: var(--color);
+    box-shadow: inset 0 0 3px var(--color);
+  }
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 8px var(--color), inset 0 0 3px var(--color);
+    color: var(--bg-color);
+    background-color: var(--color);
+  }
+
+  &:focus {
+    outline: thick double var(--color);
+  }
+}
+
+/* ==========================
+   ♿ Accessibilité
+   ========================== */
+@media (prefers-reduced-motion: reduce) {
+  dialog form input,
+  dialog form button {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ==========================
+   🔸 Backdrop du dialog
+   ========================== */
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.75); /* noir semi-transparent */
+  backdrop-filter: blur(2px);      /* léger flou pour style CRT */
+    background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(74, 241, 74, 0.05) 0,
+    rgba(74, 241, 74, 0.05) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+}
+

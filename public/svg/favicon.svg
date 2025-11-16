@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Fond noir -->
+  <rect width="64" height="64" fill="black"/>
+
+  <!-- Cigarette simple -->
+  <rect x="12" y="28" width="40" height="10" fill="rgb(74,241,74)" rx="2"/>
+
+  <!-- Barre diagonale pour interdiction -->
+  <line x1="8" y1="8" x2="56" y2="56" stroke="rgb(74,241,74)" stroke-width="6"/>
+
+  <!-- Fumée accentuée encore plus visible -->
+  <path d="M52 28 Q55 20 52 12 Q55 6 50 4" 
+        stroke="rgb(74,241,74)" 
+        stroke-width="4" 
+        fill="none" 
+        stroke-opacity="1"/>
+</svg>
