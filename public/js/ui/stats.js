@@ -1,20 +1,18 @@
+import { UserSmoked } from '../domain/user-smoked.js';
+
 export function updateStatsUI(data) {
-    document.getElementById("smokedToday").textContent = data.smokedToday;
-    document.getElementById("totalSmoked").textContent = data.totalSmoked;
+    const userStats = new UserSmoked(data);
+
+    document.getElementById("smokedToday").textContent = userStats.smokedToday;
+    document.getElementById("totalSmoked").textContent = userStats.totalSmoked;
 
     const list = document.getElementById("smokedLastWeek");
     list.innerHTML = "";
-
-    data.smokedLastWeek.forEach(entry => {
+    userStats.smokedLastWeek.forEach(entry => {
         const li = document.createElement("li");
-        li.textContent = `${entry.day} — ${entry.count}`;
+        li.textContent = entry.formatted();
         list.appendChild(li);
     });
 
-    if (data.firstSmokedRecorded) {
-        document.getElementById("firstSmokedRecorded").textContent =
-            `Première cigarette enregistrée le : ${data.firstSmokedRecorded}`;
-    } else {
-        document.getElementById("firstSmokedRecorded").textContent = "Aucune cigarette enregistrée.";
-    }
+    document.getElementById("lastSmokedRecorded").textContent = userStats.lastSmokedFormatted();
 }
