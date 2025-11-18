@@ -21,7 +21,7 @@ export class Duration {
         if (this.days > 0) parts.push(`${this.days} jour${this.days > 1 ? 's' : ''}`);
         if (this.hours > 0) parts.push(`${this.hours} heure${this.hours > 1 ? 's' : ''}`);
         if (this.minutes > 0) parts.push(`${this.minutes} minute${this.minutes > 1 ? 's' : ''}`);
-        if (parts.length === 0) parts.push("0 minute");
+        if (parts.length === 0) parts.push("moins d'une minute");
         return parts.join(' ');
     }
 }
