@@ -7,6 +7,7 @@ export class UserSmoked {
         this.totalSmoked = data.totalSmoked;
         this.firstSmokedRecorded = data.firstSmokedRecorded ? new Date(data.firstSmokedRecorded) : null;
         this.lastSmokedRecorded = data.lastSmokedRecorded ? new Date(data.lastSmokedRecorded) : null;
+        this.now = data.now;
 
         this.smokedLastWeek = (data.smokedLastWeek || []).map(
             entry => new SmokedCountByDay(entry.day, entry.count)
@@ -19,7 +20,7 @@ export class UserSmoked {
 
     lastSmokedFormatted() {
         if (!this.lastSmokedRecorded) return "Aucune cigarette enregistrée.";
-        const duration = new Duration(this.lastSmokedRecorded);
+        const duration = new Duration(this.lastSmokedRecorded, this.now);
         return `Dernière cigarette fumée il y a ${duration.toString()}`;
     }
 }
