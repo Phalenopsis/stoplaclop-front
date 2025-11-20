@@ -69,15 +69,36 @@
     <button class="secondary" id="showRegisterDialog">Register</button>
 
     <main id="app" class="no-display">
-      <div id="stats">
-        <p>Aujourd'hui : <span id="smokedToday">0</span></p>
-        <p>Total : <span id="totalSmoked">0</span></p>
-        <p id="lastSmokedRecorded"></p>
+      <section id="stats">
+        <article>
+          <h2>Statistiques financières</h2>
+          <p>Argent brûlé&nbsp;: <span id="burnedMoney">0</span>&nbsp;€</p>
+          <p>
+            Argent économisé aujourd'hui&nbsp;:
+            <span id="savedMoneyToday">0</span>&nbsp;€
+          </p>
+          <p>
+            Argent économisé au total&nbsp;:
+            <span id="savedMoney">0</span>&nbsp;€
+          </p>
+        </article>
 
-        <ul id="smokedLastWeek"></ul>
+        <article>
+          <h2>Statistiques de tabagisme</h2>
+          <p>
+            Cigarettes fumées aujourd'hui&nbsp;: <span id="smokedToday">0</span>
+          </p>
+          <p id="minutesSinceLastSmoked"></p>
+        </article>
+
+        <article>
+          <h2>Cigarettes fumées la semaine dernière</h2>
+
+          <ul id="smokedLastWeek"></ul>
+        </article>
 
         <button id="addSmokedBtn">Fumer une cigarette</button>
-      </div>
+      </section>
     </main>
     <button id="logoutButton" class="no-display secondary">Logout</button>
   </body>
